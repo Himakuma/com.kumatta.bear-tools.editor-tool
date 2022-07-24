@@ -1,0 +1,1 @@
+# com.kumatta.bear-tools.editor-tool
