@@ -158,6 +158,7 @@ namespace Kumatta.BearTools
             }
 
 
+
             private void OnGUI()
             {
                 mainView.style.width = rootVisualElement.contentRect.width;

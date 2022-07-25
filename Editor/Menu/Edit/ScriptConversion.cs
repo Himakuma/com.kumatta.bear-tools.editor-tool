@@ -183,7 +183,7 @@ namespace Kumatta.BearTools.Editor
 
 
 
-        [MenuItem("Assets/Apply Auto Script Convert", priority = -100)]
+        [MenuItem("Assets/Apply Auto Script Convert", priority = 19)]
         public static void MenuApplyAutoScriptConvert()
         {
             var selectAssetPaths = Selection.GetFiltered<UnityEngine.Object>(SelectionMode.Assets).Select(asset => AssetDatabase.GetAssetPath(asset));
