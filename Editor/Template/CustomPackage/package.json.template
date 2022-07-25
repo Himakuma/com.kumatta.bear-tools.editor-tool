@@ -1,0 +1,16 @@
+{
+  "name": "com.[company-name].[package-name].[library-name]",
+  "version": "1.0.0",
+  "displayName": "[library-name]",
+  "description": "This is an example package",
+  "unity": "2019.4",
+  "dependencies": {
+ },
+ "keywords": [
+  ],
+  "author": {
+    "name": "[author.name]",
+    "email": "[author.email]",
+    "url": "[author.url]"
+  }
+}
