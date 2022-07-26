@@ -2,7 +2,6 @@
 using System.Text;
 using System.Linq;
 using UnityEditor;
-using UnityEngine;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
@@ -28,7 +27,7 @@ namespace Kumatta.BearTools.Editor
         {
             if (assetName.EndsWith(".cs.meta"))
             {
-                string lineChar = GetLineChar();
+                string lineChar = GetSettingLineChar();
                 if (EditorPrefs.GetBool(MENU_AUTO_UTF8_KEY, false))
                 {
                     Task.Run(() =>
@@ -50,8 +49,7 @@ namespace Kumatta.BearTools.Editor
             }
         }
 
-
-        private static string GetLineChar()
+        private static string GetSettingLineChar()
         {
             if (EditorPrefs.GetBool(MENU_AUTO_LF_KEY, false))
             {
@@ -65,7 +63,7 @@ namespace Kumatta.BearTools.Editor
         }
 
 
-
+        #region Auto Convert Setting Menu
 
         [MenuItem(MENU_AUTO_UTF8_PATH, priority = 20)]
         public static void MenuScriptAutoUtf8()
@@ -83,7 +81,6 @@ namespace Kumatta.BearTools.Editor
         }
 
 
-
         [MenuItem(MENU_AUTO_LF_PATH, priority = 31)]
         public static void MenuScriptAutoLF()
         {
@@ -97,6 +94,7 @@ namespace Kumatta.BearTools.Editor
                 Menu.SetChecked(MENU_AUTO_CRLF_PATH, false);
             }
         }
+
 
         [MenuItem(MENU_AUTO_LF_PATH, true)]
         public static bool MenuCheckScriptAutoLF()
@@ -127,48 +125,42 @@ namespace Kumatta.BearTools.Editor
             Menu.SetChecked(MENU_AUTO_CRLF_PATH, EditorPrefs.GetBool(MENU_AUTO_CRLF_KEY, false));
             return true;
         }
+        #endregion
 
 
+        /// <summary>
+        /// アセット名からフルパスを取得
+        /// </summary>
+        /// <param name="assetName"></param>
+        /// <returns></returns>
         private static string GetCSFilePath(string assetName)
         {
             return Path.GetFullPath(assetName.Substring(0, assetName.Length - 5));
         }
 
 
-
+        /// <summary>
+        /// スクリプトをUTF8に修正
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="lineChar"></param>
         private static void ScriptAutoUtf8(string filePath, string lineChar)
         {
-            // BOMがあるので、UTF-8
-            byte[] fileData = File.ReadAllBytes(filePath);
-            string utf8Text = "";
-            byte[] bom = null;
-            if ((fileData[0] == 0xef) && (fileData[1] == 0xbb) && (fileData[2] == 0xbf))
+            string utf8Text;
+            if (FileUtil.BomExists(filePath))
             {
-                utf8Text = Encoding.UTF8.GetString(fileData);
+                utf8Text = File.ReadAllText(filePath, Encoding.UTF8);
             }
             else
             {
-                bom = Encoding.UTF8.GetPreamble();
-                var encodingSJIS = Encoding.GetEncoding("Shift_JIS");
-                string sjisText = encodingSJIS.GetString(fileData);
-                utf8Text = Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(sjisText));
+                utf8Text = FileUtil.GetStringSjis(filePath).ConvertEncoding(Encoding.UTF8); ;
             }
 
             if (!string.IsNullOrEmpty(lineChar))
             {
                 utf8Text = LineCharConvert(utf8Text, lineChar);
             }
-
-            byte[] utf8Bytes = Encoding.UTF8.GetBytes(utf8Text);
-            if (bom == null)
-            {
-                File.WriteAllBytes(filePath, utf8Bytes);
-            }
-            else
-            {
-                File.WriteAllBytes(filePath, bom.Concat(utf8Bytes).ToArray());
-            }
-
+            File.WriteAllText(filePath, utf8Text, Encoding.UTF8);
         }
 
 
@@ -176,7 +168,6 @@ namespace Kumatta.BearTools.Editor
         {
             return text.Replace("\r\n", "\n").Replace("\n", lineChar);
         }
-
 
 
         #endregion
@@ -187,7 +178,6 @@ namespace Kumatta.BearTools.Editor
         public static void MenuApplyAutoScriptConvert()
         {
             var selectAssetPaths = Selection.GetFiltered<UnityEngine.Object>(SelectionMode.Assets).Select(asset => AssetDatabase.GetAssetPath(asset));
-
             var fileList = new List<string>();
             foreach (string path in selectAssetPaths)
             {
@@ -202,7 +192,7 @@ namespace Kumatta.BearTools.Editor
                 }
             }
 
-            string lineChar = GetLineChar();
+            string lineChar = GetSettingLineChar();
             if (EditorPrefs.GetBool(MENU_AUTO_UTF8_KEY, false))
             {
                 Task.Run(() =>
@@ -224,10 +214,8 @@ namespace Kumatta.BearTools.Editor
                     }
                 });
             }
-
-
-
         }
+
 
         [MenuItem("Assets/Apply Auto Script Convert", validate = true)]
         public static bool MenuValidApplyAutoScriptConvert()

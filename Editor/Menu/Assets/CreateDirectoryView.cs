@@ -169,7 +169,6 @@ namespace Kumatta.BearTools
                 mainView.style.minHeight = rootVisualElement.contentRect.height;
                 mainView.style.maxHeight = rootVisualElement.contentRect.height;
 
-
                 foreach (var input in inputFields.Values)
                 {
                     if (!input.IsValid())
@@ -178,10 +177,7 @@ namespace Kumatta.BearTools
                         return;
                     }
                 }
-
                 okButton.SetEnabled(true);
-
-
             }
 
             private void OnClick_Create()
@@ -273,7 +269,6 @@ namespace Kumatta.BearTools
                 {
                     CreateDirectory(rootPath, hirectoryDefinition);
                 }
-
                 AssetDatabase.Refresh();
             }
 
@@ -303,19 +298,15 @@ namespace Kumatta.BearTools
                     case HierarchicalDefinitionType.Text:
                     case HierarchicalDefinitionType.Json:
                     case HierarchicalDefinitionType.Markdown:
-                    case HierarchicalDefinitionType.Binary:
-
                         string temFilePath = FileUtil.GetFileFullPath(PACKAGE_NAME, hierarchicalDefinition.TmpPath);
-                        if (hierarchicalDefinition.Type == HierarchicalDefinitionType.Binary)
-                        {
-                            File.WriteAllBytes(Path.Combine(rootPath, fileName), File.ReadAllBytes(temFilePath));
-                        }
-                        else
-                        {
-                            string fileText = string.IsNullOrEmpty(hierarchicalDefinition.TmpPath) ? "" : File.ReadAllText(temFilePath);
-                            fileText = InputReplaceAll(fileText);
-                            File.WriteAllText(Path.Combine(rootPath, fileName), fileText);
-                        }
+                        string fileText = string.IsNullOrEmpty(hierarchicalDefinition.TmpPath) ? "" : File.ReadAllText(temFilePath);
+                        fileText = InputReplaceAll(fileText);
+                        File.WriteAllText(Path.Combine(rootPath, fileName), fileText);
+                        break;
+
+                    case HierarchicalDefinitionType.Binary:
+                        string temBinaryFilePath = FileUtil.GetFileFullPath(PACKAGE_NAME, hierarchicalDefinition.TmpPath);
+                        File.WriteAllBytes(Path.Combine(rootPath, fileName), File.ReadAllBytes(temBinaryFilePath));
                         break;
                 }
 

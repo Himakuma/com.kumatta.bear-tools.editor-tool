@@ -57,6 +57,8 @@ namespace Kumatta.BearTools.Editor
             return Path.Combine(Application.dataPath, filePath);
         }
 
+        #region Text File
+
         /// <summary>
         /// JSONをオブジェクトに変換
         /// </summary>
@@ -71,5 +73,39 @@ namespace Kumatta.BearTools.Editor
                 return (T)serializer.ReadObject(stream);
             }
         }
+
+        /// <summary>
+        /// ファイルヘッダにBOMがある場合、true
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static bool BomExists(string path)
+        {
+            using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+            {
+                byte[] headBytes = new byte[3];
+                if (headBytes.Length == fs.Read(headBytes, 0, 3))
+                {
+                    if (headBytes[0] == 0xef && headBytes[1] == 0xbb && headBytes[2] == 0xbf)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// ファイルのテキストをSJISで取得
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static string GetStringSjis(string filePath)
+        {
+            var encoding = Encoding.GetEncoding("Shift_JIS");
+            return File.ReadAllText(filePath, encoding);
+        }
+
+        #endregion
     }
 }
