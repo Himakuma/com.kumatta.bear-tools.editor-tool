@@ -1,7 +1,7 @@
 {
-  "name": "com.[company-name].[package-name].[library-name]",
+  "name": "com.[company-name:Lower].[package-name:Lower]",
   "version": "1.0.0",
-  "displayName": "[library-name]",
+  "displayName": "[package-name]",
   "description": "This is an example package",
   "unity": "2019.4",
   "dependencies": {

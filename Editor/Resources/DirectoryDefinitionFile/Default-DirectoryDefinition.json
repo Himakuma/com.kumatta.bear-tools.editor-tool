@@ -67,26 +67,19 @@
 	},
 	{
 		"name": "Custom Package",
-		"root-directory": "../Packages",
+		"root-directory": "[Current-Directory]",
 		"replace-input": [
 			{
 				"label": "Company Name",
 				"input-type": "AlphabetOrNumber",
-				"replace-string": "[company-name]",
+				"replace-string": "company-name",
 				"defalut": "",
 				"required": true
 			},
 			{
 				"label": "Package Name",
 				"input-type": "AlphabetOrNumber",
-				"replace-string": "[package-name]",
-				"defalut": "",
-				"required": true
-			},
-			{
-				"label": "Library Name",
-				"input-type": "AlphabetOrNumber",
-				"replace-string": "[library-name]",
+				"replace-string": "package-name",
 				"defalut": "",
 				"required": true
 			}
@@ -94,7 +87,7 @@
 		"directory-definition": [
 			{
 				"type": "directory",
-				"name": "com.[company-name].[package-name].[library-name]",
+				"name": "com.[company-name:Lower].[package-name:Lower]",
 				"children": [
 					{
 						"type": "json",
@@ -127,7 +120,7 @@
 						"children": [
 							{
 								"type": "asmdef",
-								"name": "[company-name].[package-name].[library-name].Editor.asmdef",
+								"name": "[company-name:TopUpper].[package-name:TopUpper].Editor.asmdef",
 								"tmpPath": "Editor/Template/CustomPackage/AssemblyEditor.asmdef.template"
 							}
 						]
@@ -138,7 +131,7 @@
 						"children": [
 							{
 								"type": "asmdef",
-								"name": "[company-name].[package-name].[library-name].asmdef",
+								"name": "[company-name:TopUpper].[package-name:TopUpper].asmdef",
 								"tmpPath": "Editor/Template/CustomPackage/Assembly.asmdef.template"
 							}
 						]
@@ -153,7 +146,7 @@
 								"children": [
 									{
 										"type": "asmdef",
-										"name": "[company-name].[package-name].[library-name].Editor.Tests.asmdef",
+										"name": "[company-name:TopUpper].[package-name:TopUpper].Editor.Tests.asmdef",
 										"tmpPath": "Editor/Template/CustomPackage/AssemblyEditor-Tests.asmdef.template"
 									}
 								]
@@ -164,7 +157,7 @@
 								"children": [
 									{
 										"type": "asmdef",
-										"name": "[company-name].[package-name].[library-name].Tests.asmdef",
+										"name": "[company-name:TopUpper].[package-name:TopUpper].Tests.asmdef",
 										"tmpPath": "Editor/Template/CustomPackage/Assembly-Tests.asmdef.template"
 									}
 								]
@@ -187,7 +180,7 @@
 						"children": [
 							{
 								"type": "markdown",
-								"name": "[library-name].md",
+								"name": "[package-name:TopUpper].md",
 								"tmpPath": ""
 							}
 						]

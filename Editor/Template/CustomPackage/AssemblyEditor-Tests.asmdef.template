@@ -1,5 +1,5 @@
 {
-    "name": "[company-name].[package-name].[library-name].Editor.Tests",
+    "name": "[company-name:TopUpper].[package-name:TopUpper].Editor.Tests",
     "references": [],
     "includePlatforms": [
         "Editor"

@@ -143,6 +143,11 @@ namespace Kumatta.BearTools
             {
                 var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"Packages/{PACKAGE_NAME}/Editor/Resources/View/CreateDirectoryView.uxml");
                 mainView = visualTree.Instantiate();
+
+                var winPosi = position;
+                winPosi.width = 500;
+                winPosi.height = 300;
+
                 rootVisualElement.Add(mainView);
 
                 okButton = mainView.FindChildByName<Button>("Create");
@@ -235,7 +240,10 @@ namespace Kumatta.BearTools
                 foreach (var replaceInputs in directoryDefinition.ReplaceInputs)
                 {
                     string replaceText = inputFields[replaceInputs.Label].text;
-                    result = result.Replace(replaceInputs.ReplaceString, replaceText);
+                    result = result.Replace($"[{replaceInputs.ReplaceString}:TopUpper]", replaceText.ToTopUpper());
+                    result = result.Replace($"[{replaceInputs.ReplaceString}:Upper]", replaceText.ToUpper());
+                    result = result.Replace($"[{replaceInputs.ReplaceString}:Lower]", replaceText.ToLower());
+                    result = result.Replace($"[{replaceInputs.ReplaceString}]", replaceText);
                 }
                 return result;
             }
