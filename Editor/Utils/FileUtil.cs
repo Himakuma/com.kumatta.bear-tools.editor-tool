@@ -68,7 +68,7 @@ namespace Kumatta.BearTools.Editor
         public static T JsonToObject<T>(string filePath)
         {
             var serializer = new DataContractJsonSerializer(typeof(T));
-            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(File.ReadAllText(filePath))))
+            using (var stream = new MemoryStream(File.ReadAllBytes(filePath)))
             {
                 return (T)serializer.ReadObject(stream);
             }
