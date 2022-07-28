@@ -6,6 +6,8 @@
 
 ![Script Auto Menu](Documentation/image/001_ScriptAutoMenu.png)
 
+![Script Auto Menu](Documentation/image/002_ScriptAutoMenu.png)
+
 ![Directory Template Menu](Documentation/image/002_DirectoryTemplateMenu.png)
 
 
