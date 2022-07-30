@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Packages/com.kumatta.bear-tools.editor-tool/Editor/Resources/View/CreateDirectoryView.uss" />
+    <ui:VisualElement name="MainArea">
+        <ui:VisualElement name="InputArea">
+            <ui:ScrollView name="InputAreaScroll" />
+        </ui:VisualElement>
+        <ui:VisualElement name="ButtonArea">
+            <ui:Button text="作成" display-tooltip-when-elided="true" name="Create" class="input-button" />
+            <ui:Button text="キャンセル" display-tooltip-when-elided="true" name="Cancel" class="input-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

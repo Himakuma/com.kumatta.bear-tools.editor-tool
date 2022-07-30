@@ -1,0 +1,193 @@
+[
+	{
+		"name": "Project Default Folders",
+		"root-directory": "[Current-Directory]",
+		"directory-definition": [
+			{
+				"type": "directory",
+				"name": "Scenes"
+			},
+			{
+				"type": "directory",
+				"name": "Prefabs"
+			},
+			{
+				"type": "directory",
+				"name": "Scripts"
+			},
+			{
+				"type": "directory",
+				"name": "Animations"
+			},
+			{
+				"type": "directory",
+				"name": "Materials"
+			},
+			{
+				"type": "directory",
+				"name": "Physics Materials"
+			},
+			{
+				"type": "directory",
+				"name": "Fonts"
+			},
+			{
+				"type": "directory",
+				"name": "Textures"
+			},
+			{
+				"type": "directory",
+				"name": "Audio"
+			},
+			{
+				"type": "directory",
+				"name": "Resources"
+			},
+			{
+				"type": "directory",
+				"name": "Editor"
+			},
+			{
+				"type": "directory",
+				"name": "Plugins"
+			},
+			{
+				"type": "directory",
+				"name": "StreamingAssets"
+			},
+			{
+				"type": "directory",
+				"name": "Editor Default Resources"
+			},
+			{
+				"type": "directory",
+				"name": "Gizmos"
+			}
+		]
+	},
+	{
+		"name": "Custom Package",
+		"root-directory": "[Current-Directory]",
+		"replace-input": [
+			{
+				"label": "Company Name",
+				"input-type": "AlphabetOrNumber",
+				"replace-string": "company-name",
+				"defalut": "",
+				"required": true
+			},
+			{
+				"label": "Package Name",
+				"input-type": "AlphabetOrNumber",
+				"replace-string": "package-name",
+				"defalut": "",
+				"required": true
+			}
+		],
+		"directory-definition": [
+			{
+				"type": "directory",
+				"name": "com.[company-name:Lower].[package-name:Lower]",
+				"children": [
+					{
+						"type": "json",
+						"name": "package.json",
+						"tmpPath": "Editor/Template/CustomPackage/package.json.template"
+					},
+					{
+						"type": "markdown",
+						"name": "README.md",
+						"tmpPath": ""
+					},
+					{
+						"type": "markdown",
+						"name": "CHANGELOG.md",
+						"tmpPath": ""
+					},
+					{
+						"type": "markdown",
+						"name": "LICENSE.md",
+						"tmpPath": ""
+					},
+					{
+						"type": "markdown",
+						"name": "Third Party Notices.md",
+						"tmpPath": ""
+					},
+					{
+						"type": "directory",
+						"name": "Editor",
+						"children": [
+							{
+								"type": "asmdef",
+								"name": "[company-name:TopUpper].[package-name:TopUpper].Editor.asmdef",
+								"tmpPath": "Editor/Template/CustomPackage/AssemblyEditor.asmdef.template"
+							}
+						]
+					},
+					{
+						"type": "directory",
+						"name": "Runtime",
+						"children": [
+							{
+								"type": "asmdef",
+								"name": "[company-name:TopUpper].[package-name:TopUpper].asmdef",
+								"tmpPath": "Editor/Template/CustomPackage/Assembly.asmdef.template"
+							}
+						]
+					},
+					{
+						"type": "directory",
+						"name": "Tests",
+						"children": [
+							{
+								"type": "directory",
+								"name": "Editor",
+								"children": [
+									{
+										"type": "asmdef",
+										"name": "[company-name:TopUpper].[package-name:TopUpper].Editor.Tests.asmdef",
+										"tmpPath": "Editor/Template/CustomPackage/AssemblyEditor-Tests.asmdef.template"
+									}
+								]
+							},
+							{
+								"type": "directory",
+								"name": "Runtime",
+								"children": [
+									{
+										"type": "asmdef",
+										"name": "[company-name:TopUpper].[package-name:TopUpper].Tests.asmdef",
+										"tmpPath": "Editor/Template/CustomPackage/Assembly-Tests.asmdef.template"
+									}
+								]
+							}
+						]
+					},
+					{
+						"type": "directory",
+						"name": "Samples",
+						"children": [
+							{
+								"type": "directory",
+								"name": "Sampledirectory1"
+							}
+						]
+					},
+					{
+						"type": "directory",
+						"name": "Documentation",
+						"children": [
+							{
+								"type": "markdown",
+								"name": "[package-name:TopUpper].md",
+								"tmpPath": ""
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+]
+

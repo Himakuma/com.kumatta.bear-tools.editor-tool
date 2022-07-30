@@ -1,0 +1,15 @@
+{
+  "name": "com.kumatta.bear-tools.editor-tool",
+  "version": "1.0.0",
+  "displayName": "BearTools Editor",
+  "description": "Editor Tools",
+  "unity": "2019.4",
+  "keywords": [
+    "Kumatta",
+    "Editor"
+  ],
+  "author": {
+    "name": "Kumatta",
+    "url": "https://github.com/Himakuma/BearTools"
+  }
+}
