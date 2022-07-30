@@ -142,7 +142,12 @@ namespace Kumatta.BearTools
             public void CreateGUI()
             {
                 var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"Packages/{PACKAGE_NAME}/Editor/Resources/View/CreateDirectoryView.uxml");
+
+#if UNITY_2019
+                mainView = visualTree.CloneTree();
+#else
                 mainView = visualTree.Instantiate();
+#endif
 
                 var winPosi = position;
                 winPosi.width = 500;

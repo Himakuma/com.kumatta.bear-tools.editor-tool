@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Kumatta.BearTools.Editor
 {
-    public class ScriptConversion : AssetModificationProcessor
+    public class ScriptConversion : UnityEditor.AssetModificationProcessor
     {
 
         #region Auto Convert Setting
