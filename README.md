@@ -116,6 +116,7 @@
     | label | 入力時のラベル |
     | input-type | ・Free<br>・Number<br>・Alphabet<br>・AlphabetOrNumber<br>・Regex　[C#の正規表現に従う](https://docs.microsoft.com/ja-jp/dotnet/standard/base-types/regular-expressions) |
     | replace-string | 置換元の文字列 <br> **ディレクトリ定義** の **"name"** 、ファイル内の **[replace-string]** 形式の<br>"[]"で囲った文字列が置き換えられる<br> また、 **[replace-string:TopUpper]** の形式で、下記を設定できる <br>・ **TopUpper** (先頭大文字) <br>・ **Upper** (すべて大文字)  <br>・ **Lower** (すべて小文字)  |
+    | regex-pattern | 正規表現のパターン（ **input-type** が **Regex** 以外の場合、無視） |
     | defalut | デフォルト値 |
     | required | true, false |
 

@@ -221,6 +221,13 @@ namespace Kumatta.BearTools
 
                     Enum.TryParse(inputInfo.InputTypeStr, true, out CusutomTextField.TextType result);
                     testFiled.FieldType = result;
+
+
+                    if (result == CusutomTextField.TextType.Regex)
+                    {
+                        testFiled.RegexPattern = inputInfo.RegexPattern;
+                    }
+
                     testFiled.Check();
 
                     inputAreaScroll.contentViewport.Add(testFiled);

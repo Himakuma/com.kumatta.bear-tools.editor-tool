@@ -106,7 +106,7 @@ namespace Kumatta.BearTools.Editor
                 return true;
             }
 
-            RegexPattern = defaultRegexPattern[FieldType];
+            RegexPattern = (FieldType == TextType.Regex) ? RegexPattern : defaultRegexPattern[FieldType];
             return Regex.IsMatch(text, RegexPattern);
         }
     }
