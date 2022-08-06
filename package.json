@@ -1,6 +1,6 @@
 {
   "name": "com.kumatta.bear-tools.editor-tool",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "BearTools Editor",
   "description": "Editor Tools",
   "unity": "2019.4",

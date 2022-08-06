@@ -71,14 +71,16 @@
 		"replace-input": [
 			{
 				"label": "Company Name",
-				"input-type": "AlphabetOrNumber",
+				"input-type": "Regex",
+				"regex-pattern": "^[a-zA-Z][0-9a-zA-Z.-]+[0-9a-zA-Z]$",
 				"replace-string": "company-name",
 				"defalut": "",
 				"required": true
 			},
 			{
 				"label": "Package Name",
-				"input-type": "AlphabetOrNumber",
+				"input-type": "Regex",
+				"regex-pattern": "^[a-zA-Z][0-9a-zA-Z.-]+[0-9a-zA-Z]$",
 				"replace-string": "package-name",
 				"defalut": "",
 				"required": true
@@ -190,4 +192,3 @@
 		]
 	}
 ]
-

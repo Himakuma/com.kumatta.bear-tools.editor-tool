@@ -36,6 +36,11 @@ namespace Kumatta.BearTools.Editor
             [DataMember(Name = "input-type")]
             public string InputTypeStr { get; set; }
 
+            
+            [DataMember(Name = "regex-pattern")]
+            public string RegexPattern { get; set; }
+
+
             public InputType InputType
             {
                 get
